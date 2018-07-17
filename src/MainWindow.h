@@ -15,6 +15,8 @@ class MainWindow : public QMainWindow
     explicit MainWindow(QWidget* parent = nullptr);
     ~MainWindow();
     void buildInterface();
+
+  public slots:
     void showGameMenu();
     void showLevelsMenu();
 };

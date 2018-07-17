@@ -1,3 +1,5 @@
+#include <QDesktopWidget>
+
 #include "MainWindow.h"
 #include "GameMenuView.h"
 #include "LevelsMenu.h"
@@ -18,19 +20,18 @@ MainWindow::~MainWindow()
 void MainWindow::buildInterface()
 {
     this->setWindowTitle("Angular Seek-Ball");
-  #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
-    this->resize(480, 320);
-  #endif
 }
 
 void MainWindow::showGameMenu()
 {
     GameMenuView* gameMenuView = new GameMenuView(this);
+    this->connect( gameMenuView, &GameMenuView::gameLevelsAsked, this, &MainWindow::showLevelsMenu );
     this->setCentralWidget(gameMenuView);
 }
 
 void MainWindow::showLevelsMenu()
 {
     LevelsMenu* levels = new LevelsMenu(this);
+    this->connect( levels, &LevelsMenu::gameMenuAsked, this, &MainWindow::showGameMenu );
     this->setCentralWidget(levels);
 }
