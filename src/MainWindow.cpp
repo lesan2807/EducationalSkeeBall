@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::buildInterface()
 {
-    this->setWindowTitle("Angular Seek-Ball");
+    this->setWindowTitle("Angular Skee-Ball");
 }
 
 void MainWindow::showGameMenu()
