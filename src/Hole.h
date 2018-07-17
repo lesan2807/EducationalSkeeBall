@@ -3,25 +3,24 @@
 
 #include<QGraphicsEllipseItem>
 
+
 class Hole : public QGraphicsEllipseItem
 {
 
 
 protected:
-    double x;
-    double y;
-    double radius;
+    double x = 0;
+    double y = 0;
+    double radius = 50;
+    int points = 100;
 
 
 
 public:
 
-    explicit Hole(double x, double y, double radius);
-    Hole(Hole& other);
-    virtual ~Hole();
-    void setX(double x);
-    void setY(double y);
-    void setRadius(double radius);
+    double setX(double x);
+    double setY(double y);
+    double setRadius(double radius);
     double getX();
     double getY();
     double getRadius();

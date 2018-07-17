@@ -27,11 +27,13 @@ class LevelStart : public QWidget
     QGraphicsEllipseItem *ellipseBackground;
     QGraphicsItemGroup *group;
     QGraphicsRectItem *shooter;
+    Hole *holePoint;
 
  public:
     explicit LevelStart(QWidget *parent = 0);
     void addElementsToScene();
     void createGroupElements();
+    void addHoles();
     ~LevelStart();
 
  signals:

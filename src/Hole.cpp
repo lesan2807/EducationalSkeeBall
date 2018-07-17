@@ -2,34 +2,22 @@
 #include <QPen>
 #include <QPainter>
 
-Hole::Hole(double x, double y,  double radius)
-    : x{x}
-    , y{y}
-    , radius{radius} 
-{
-
-}
-
-
-Hole::~Hole()
-{
-
-}
-
-
-void Hole::setX(double x)
+double Hole::setX(double x)
 {
     this->x = x;
+    return this->x;
 }
 
-void Hole::setY(double y)
+double Hole::setY(double y)
 {
     this->y = y;
+    return this->y;
 }
 
-void Hole::setRadius(double radius)
+double Hole::setRadius(double radius)
 {
     this->radius = radius;
+    return this->radius;
 }
 
 double Hole::getX()
@@ -46,4 +34,6 @@ double Hole::getRadius()
 {
     return this->radius;
 }
+
+
 
