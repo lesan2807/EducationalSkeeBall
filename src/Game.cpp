@@ -1,3 +1,4 @@
+#include <QGraphicsView>
 #include "Game.h"
 #include "MainWindow.h"
 
@@ -13,6 +14,7 @@ Game::~Game()
 
 int Game::run()
 {
+    // shows Main Window
     this->mainWindow = new MainWindow();
     mainWindow->show();
 

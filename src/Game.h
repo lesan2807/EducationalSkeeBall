@@ -5,18 +5,30 @@
 
 class MainWindow;
 
-class Game : QApplication
+/**
+    Game controller. An object that represents the game.
+*/
+
+class Game : public QApplication
 {
     Q_DISABLE_COPY(Game)
 
   private:
-    //int score = 0;
+    /// Main Window:
     MainWindow* mainWindow = nullptr;
 
+
   public:
+    /// Constructor
     Game(int& argc, char* argv[]);
+    /// Destructor
     ~Game();
+    /// Call this method instead of exec()
     int run();
+    /// Play the given filename as background music
+    // void playBackgroundMusic(const QString& audioFilename);
+
+
 };
 
 #endif // GAME_H

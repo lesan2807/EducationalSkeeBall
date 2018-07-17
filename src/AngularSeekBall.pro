@@ -28,13 +28,17 @@ SOURCES += \
     main.cpp \
     Game.cpp \
     MainWindow.cpp \
-    LevelsMenu.cpp
+    LevelsMenu.cpp \
+    LevelStart.cpp \
+    Hole.cpp
 
 HEADERS += \
     GameMenuView.h \
     Game.h \
     MainWindow.h \
-    LevelsMenu.h
+    LevelsMenu.h \
+    LevelStart.h \
+    Hole.h
 
 FORMS += \
     GameMenuView.ui \

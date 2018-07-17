@@ -18,6 +18,10 @@ class GameMenuView : public QWidget
   public:
     explicit GameMenuView(QWidget* parent = nullptr);
     ~GameMenuView();
+
+  signals:
+    void gameLevelsAsked();
+    void startGame();
 };
 
 #endif // GAMEMENUVIEW_H
