@@ -1,3 +1,5 @@
+#include <QDesktopWidget>
+
 #include "MainWindow.h"
 #include "LevelStart.h"
 #include "GameMenuView.h"
@@ -20,6 +22,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::buildInterface()
 {
+<<<<<<< HEAD
     // sets the window title to "Angular Seek-Ball"
     this->setWindowTitle("Angular Skee-Ball");
 
@@ -27,6 +30,9 @@ void MainWindow::buildInterface()
   #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
     this->resize(480, 320);
   #endif
+=======
+    this->setWindowTitle("Angular Skee-Ball");
+>>>>>>> 23aacbd4bfaffdd378713347bcb78807016c91ba
 }
 
 void MainWindow::showGameMenu()
