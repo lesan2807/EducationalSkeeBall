@@ -10,7 +10,6 @@ enum class GameState
     gameLevelsMenu,
     gameStart,
     gamePlay
-
 };
 
 class MainWindow : public QMainWindow
@@ -31,8 +30,11 @@ class MainWindow : public QMainWindow
     void buildInterface();
 
   public slots:
+    // Shows game menu
     void showGameMenu();
+    // Shows levels menu
     void showLevelsMenu();
+    // show Start Level
     void showLevelStart();
 };
 

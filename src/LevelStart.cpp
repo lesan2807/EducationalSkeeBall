@@ -1,52 +1,57 @@
-#include <QGraphicsView>
-#include <QGraphicsScene>
-#include <QGraphicsEllipseItem>
-#include <QPainter>
-
 #include "LevelStart.h"
-#include "Hole.h"
-#include "MainWindow.h"
-
-class QBrush;
-class QPen;
+#include "ui_LevelStart.h"
+#include <QList>
 
 LevelStart::LevelStart(QWidget *parent) :
-    QWidget(parent)
-
+    QWidget(parent),
+    ui(new Ui::LevelStart)
 {
+    ui->setupUi(this);
+    scene = new QGraphicsScene(this);
+    ui->graphicsView->setScene(scene);
+    addElementsToScene();
+    createGroupElements();
+    // Returns to the menu when the return button is clicked
+    this->connect(ui->menuButton, &QPushButton::clicked, this, &LevelStart::gameMenuAsked);
+    // Shoots ball
+    this->connect(ui->shootButton, &QPushButton::clicked, this, &LevelStart::shoot);
 
 }
+
+void LevelStart::addElementsToScene()
+{
+    QBrush redBrush(Qt::darkRed);
+    QBrush magentaBrush(Qt::darkMagenta);
+    QBrush darkCyanBrush(Qt::darkCyan);
+    QBrush greyBrush(Qt::darkGray);
+    QPen blackPen(Qt::black);
+    QPen whitePen(Qt::white);
+    ellipseBackground = scene->addEllipse(10.0, 10.0, 400.0, 400.0, blackPen, darkCyanBrush );
+    ellipseShooter = scene->addEllipse(160.0, 165.0, 100.0, 100.0, blackPen, redBrush);
+    shooter = scene->addRect(200.0, 165.0, 20.0, 60.0, blackPen, magentaBrush);
+    ballTop = scene->addEllipse(200.0, 165.0, 19.0, 19.0, whitePen, greyBrush);
+    ballMiddle = scene->addEllipse(200.0, 185.0, 19.0, 19.0, whitePen, greyBrush);
+    ballDown = scene->addEllipse(200.0, 205.0, 19.0, 19.0, whitePen, greyBrush);
+
+}
+
+void LevelStart::createGroupElements()
+{
+    QList<QGraphicsItem *> items;
+    items.append(shooter);
+    items.append(ballTop);
+    items.append(ballMiddle);
+    items.append((ballDown));
+    group = scene->createItemGroup(items);
+}
+
+
 
 LevelStart::~LevelStart()
 {
-    delete this->scene;
-    delete this->view;
+    delete ui;
+    delete scene;
 }
 
 
-void LevelStart::viewLevelStart()
-{
 
-    // An invisible object that manages all the items
-    this->scene = new QGraphicsScene();
-
-    // A visible rectangle of the scene
-    this->view = new QGraphicsView(this->scene);
-
-    // The scene has infinite size, but we want it has the same size than the view
-    // This stops the weird behavior of the autoscroll feature of the view being smaller than the
-    // scene, because the scene auto-increases when objects are moved
-    this->scene->setSceneRect( this->view->rect() );
-
-    // Disable scrollbars because they are not longer needed
-    this->view->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-    this->view->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-
-    // Adds an ellipse in the center:
-    QPen pen;
-    this->scene->addEllipse(280.0, 180.0, 80.0, 80.0 , pen, QBrush(Qt::blue));
-
-
-    // Show the view and enter in application's event loop
-    this->view->show();
-}

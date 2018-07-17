@@ -1,8 +1,10 @@
 #include "GameMenuView.h"
+#include "LevelStart.h"
 #include "LevelsMenu.h"
 #include "MainWindow.h"
 #include "ui_GameMenuView.h"
 #include "ui_LevelsMenu.h"
+#include "ui_LevelStart.h"
 
 GameMenuView::GameMenuView(QWidget *parent)
     : QWidget(parent)
@@ -14,8 +16,7 @@ GameMenuView::GameMenuView(QWidget *parent)
     // When Levels button is clicked, show the Game Level Menu
     this->connect( ui->levelsButton, &QPushButton::clicked, this, &GameMenuView::gameLevelsAsked );
     // When Start button is clicked, start the game with the initial level
-    this->connect( ui->startButton, &QPushButton::clicked, this, &GameMenuView::startGame );
-    this->connect( ui->levelsButton, &QPushButton::clicked, this, &GameMenuView::gameLevelsAsked );
+    this->connect( ui->startButton, &QPushButton::clicked, this, &GameMenuView::startGameAsked);
 }
 
 GameMenuView::~GameMenuView()

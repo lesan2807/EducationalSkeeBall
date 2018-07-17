@@ -6,6 +6,7 @@
 #include "LevelsMenu.h"
 #include "ui_GameMenuView.h"
 #include "ui_LevelsMenu.h"
+#include "ui_LevelStart.h"
 #include <QDesktopWidget>
 
 
@@ -22,21 +23,24 @@ MainWindow::~MainWindow()
 
 void MainWindow::buildInterface()
 {
-    // sets the window title to "Angular Seek-Ball"
+    // sets the window title to "Angular Skee-Ball"
     this->setWindowTitle("Angular Skee-Ball");
 
     // For desktop, resize the main  window
   #if ! defined(Q_OS_ANDROID) && ! defined(Q_OS_IOS)
     this->resize(480, 320);
   #endif
-    this->setWindowTitle("Angular Skee-Ball");
 }
 
 void MainWindow::showGameMenu()
 {
+    this->resize(400,300);
     // Show the game menu to select between start, levels or exit
     GameMenuView* gameMenuView = new GameMenuView(this);
+    // Show the levels menu if the Levels button is pressed
     this->connect( gameMenuView, &GameMenuView::gameLevelsAsked, this, &MainWindow::showLevelsMenu );
+    // Show the Initial Level if the Start button is pressed
+    this->connect( gameMenuView, &GameMenuView::startGameAsked, this, &MainWindow::showLevelStart );
     this->setCentralWidget(gameMenuView);
 
     // Now the application is in game menu state
@@ -47,6 +51,7 @@ void MainWindow::showLevelsMenu()
 {
     // Show the level map to select which levels are avaliable to play
     LevelsMenu* levels = new LevelsMenu(this);
+    // Returns to the menu if return is pressed
     this->connect( levels, &LevelsMenu::gameMenuAsked, this, &MainWindow::showGameMenu );
     this->setCentralWidget(levels);
 
@@ -57,9 +62,10 @@ void MainWindow::showLevelsMenu()
 void MainWindow::showLevelStart()
 {
     // Show the starting level
+    this->resize(635,500);
     LevelStart* start = new LevelStart(this);
-
-    start->viewLevelStart();
+    // Return to the menu if the Menu button is pressed
+    this->connect( start ,  &LevelStart::gameMenuAsked, this, &MainWindow::showGameMenu );
     this->setCentralWidget(start);
 
     // Now the application is in start level state

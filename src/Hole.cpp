@@ -5,10 +5,11 @@
 Hole::Hole(double x, double y,  double radius)
     : x{x}
     , y{y}
-    , radius{radius}
+    , radius{radius} 
 {
 
 }
+
 
 Hole::~Hole()
 {

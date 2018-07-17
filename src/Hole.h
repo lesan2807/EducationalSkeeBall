@@ -13,9 +13,11 @@ protected:
     double radius;
 
 
+
 public:
+
     explicit Hole(double x, double y, double radius);
-    Hole(const Hole& other);
+    Hole(Hole& other);
     virtual ~Hole();
     void setX(double x);
     void setY(double y);

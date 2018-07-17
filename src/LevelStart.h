@@ -1,27 +1,43 @@
 #ifndef LEVELSTART_H
 #define LEVELSTART_H
 
-#include <QApplication>
 #include <QWidget>
+#include <QGraphicsItemGroup>
+#include <QGraphicsScene>
+#include <QGraphicsEllipseItem>
+#include <QGraphicsRectItem>
+#include "Hole.h"
 
-
-class QGraphicsScene;
-class QGraphicsView;
-class QWidget;
+namespace Ui
+{
+    class LevelStart;
+}
 
 class LevelStart : public QWidget
 {
-  private:
-    // Manages graphic items. It is an invisible manager
-    QGraphicsScene* scene;
-    /// A visible widget that renders the scene
-    QGraphicsView* view;
+    Q_OBJECT
 
-  public:
+ private:
+    Ui::LevelStart *ui;
+    QGraphicsScene *scene;
+    QGraphicsEllipseItem *ballTop;
+    QGraphicsEllipseItem *ballMiddle;
+    QGraphicsEllipseItem *ballDown;
+    QGraphicsEllipseItem *ellipseShooter;
+    QGraphicsEllipseItem *ellipseBackground;
+    QGraphicsItemGroup *group;
+    QGraphicsRectItem *shooter;
+
+ public:
     explicit LevelStart(QWidget *parent = 0);
+    void addElementsToScene();
+    void createGroupElements();
     ~LevelStart();
-    void viewLevelStart();
 
+ signals:
+    void gameMenuAsked();
+    void startGame();
+    void shoot();
 };
 
 #endif // LEVELSTART_H

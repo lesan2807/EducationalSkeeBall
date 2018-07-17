@@ -21,7 +21,7 @@ class GameMenuView : public QWidget
 
   signals:
     void gameLevelsAsked();
-    void startGame();
+    void startGameAsked();
 };
 
 #endif // GAMEMENUVIEW_H
