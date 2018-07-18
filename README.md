@@ -1,77 +1,31 @@
 # Educational Skee Ball 
 
-This is an educational game based on trigonometry. The user must apply his knowledge in angles to give direction to the balls and try to sink them in the different holes that will appear on the board. 
-
-![Diagram](https://github.com/lesan2807/EducationalSkeeBall/blob/master/Untitled%20Diagram.svg)
-
-## Rules
-
-Player begins with 3 balls. 
-Player writes angle (degrees or radians) in a text box and presses the button "Shoot" and watches the shooter rotate in that angle. 
-The ball will move in that angle. If it hits a circle the player earns points. 
+This is an educational game based on trigonometry. The user must apply his knowledge in angles to give direction to the balls and try to sink them in the different holes that will appear on the board. Depending on the size and color of the hole, the player can win points, win balls, loose points or loose balls. 
+The player begins with 3 balls. He writes an angle in the text box given. It will be on degrees or radians, depending on how he decides to play the game. The player then presses the button "Shoot" and watches the shooter rotate in that angle. 
+The ball will move in a straight line. If it hits a hole, the score can increase, decrease, or the number of shots can increase or decrease. 
 When the player has no more balls left, the board is reset. 
-The player wins when he gets 5000 points. 
+The player moves on with the next level when he attains 2000 points. If he is out of shots, the starting angle of the shooter will be reset. 
+The player wins when he completes all levels in degrees and radians.  
 
-## Score
-* Big holes: 100
-* Medium holes: 200
-* Small holes: 500 
-* Tiny holes: 1000
+The game starts with a Main Menu in which you can select from three options: Start, Levels, or Exit. \
+![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/menu.png)
 
-## Power-ups:
-// todo: Images of powerups and difficulties. 
-* Loose balls
-* Get more balls.
-* Loose a level. 
+If the player chooses the Start button, the initial level will show up. This level is in degrees.  \
+![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/LevelStart.png)
 
+If the player chooses the Levels button, the Level menu will appear. \
+If the player presses the "D" button, the level will be loaded in degrees mode. \
+If the player presses the "R" button, the level will be loaded in radians mode. 
+![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/LevelsMenu.png)
 
-## Levels
-* Level 1: 0-500 pts: \
-    Only holes with points.\
-    Difficulty: easy. 
-    
-* Level 2: 500-1000 pts: \
-    Only holes with points. \
-    There are few big holes
-    
-* Level 3: 1000-1500 pts: \
-    Only holes with points. \
-    There are no longer big holes. 
-    
-* Level 4: 1500-2000 pts:\
-    Holes can take away points. \
-    All type of holes exist. 
-    
-* Level 5: 2000-2500 pts:\
-    Holes can take away points. \
-    Power-up added: get more balls. \
-    All types of holes exist.
-    
-* Level 6: 2500-3000 pts: \
-    Holes can take away points. \
-    Power-ups avaliable: get more balls, loose balls. \
-    All types of holes exist. 
-    
-* Level 7: 3000-3500 pts: \
-    Holes can take away points. \
-    Power-ups avaliable: get more balls, loose balls. \
-    The big holes take away more points. 
-    
-* Level 8: 3500-4000 pts: \
-    Holes can take away points. \
-    Power-ups avaliable: get more balls, loose balls. Loose a level. \
-    Angle can be in degrees or radians. 
-    
-* Level 9: 4000-4500 pts: \
-    Holes can take away points. \
-    Power-ups avaliable: get more balls, loose balls. Loose a level. \
-    Angle only in radians. 
-    
-* Level 10: 4500-5000 pts: \
-    Holes can take away points. \
-    Power-ups avaliable: get more balls, loose balls. Loose a level. \
-    Angle only in radians. \
-    Each turn, the initial angle is randomized. 
+The different types of holes in the game are: \
+![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/typesofballs.png)\
+The holes that do not have balls, will have points labeled. Some will be positive and will and to the score, others will be negative and will decrease the score. 
+
+The player can play a level as many times he wants. \
+In order to unlock the Radians option, the player will have to pass the level in Degrees. \
+If the player wins the level in Degrees, he can play the next level in Degrees but not in Radians. 
+In order to play the next level in Radians, the player must win the previous level in Radians. 
 
 ## Authors
 
