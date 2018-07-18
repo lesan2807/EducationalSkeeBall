@@ -19,7 +19,7 @@ If the player presses the "R" button, the level will be loaded in radians mode.
 ![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/LevelsMenu.png)
 
 The different types of holes in the game are: \
-![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/typesofballs.png)\
+![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/typesofholes.png)\
 The holes that do not have balls, will have points labeled. Some will be positive and will and to the score, others will be negative and will decrease the score. 
 
 The player can play a level as many times he wants. \
