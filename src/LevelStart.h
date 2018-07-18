@@ -7,6 +7,7 @@
 #include <QGraphicsEllipseItem>
 #include <QGraphicsRectItem>
 #include "Hole.h"
+#include "Score.h"
 
 namespace Ui
 {
@@ -27,6 +28,7 @@ class LevelStart : public QWidget
     QGraphicsEllipseItem *ellipseBackground;
     QGraphicsItemGroup *group;
     QGraphicsRectItem *shooter;
+    Score* score;
     Hole *holePoint;
 
  public:

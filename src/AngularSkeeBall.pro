@@ -30,7 +30,8 @@ SOURCES += \
     MainWindow.cpp \
     LevelsMenu.cpp \
     Hole.cpp \
-    LevelStart.cpp
+    LevelStart.cpp \
+    Score.cpp
 
 HEADERS += \
     GameMenuView.h \
@@ -38,7 +39,8 @@ HEADERS += \
     MainWindow.h \
     LevelsMenu.h \
     Hole.h \
-    LevelStart.h
+    LevelStart.h \
+    Score.h
 
 FORMS += \
     GameMenuView.ui \
