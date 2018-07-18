@@ -3,26 +3,38 @@
 
 #include<QGraphicsEllipseItem>
 
+/**
+
+ * @brief The Hole class represents the holes that will appear in the board
+
+ */
 
 class Hole : public QGraphicsEllipseItem
 {
+  protected:
+    /// X coordinate
+    double x;
+    /// Y coordinate
+    double y;
+    /// Hole's radius
+    double radius;
 
-
-protected:
-    double x = 0;
-    double y = 0;
-    double radius = 50;
-    int points = 100;
-
-
-
-public:
-
-    double setX(double x);
-    double setY(double y);
-    double setRadius(double radius);
+  public:
+    /// Constructor
+    explicit Hole(double x, double y, double radius);
+    /// Destructor
+    virtual ~Hole();
+    /// Change X coordinate
+    void setX(double x);
+    /// Change Y coordinate
+    void setY(double y);
+    /// Change radius
+    void setRadius(double radius);
+    /// Get x coordinate
     double getX();
+    /// Get y coordinate
     double getY();
+    /// Get radius
     double getRadius();
 };
 

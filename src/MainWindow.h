@@ -5,16 +5,21 @@
 
 enum class GameState
 {
+    /// Starting state
     unknown,
+    /// The game menu is opened
     gameMenu,
+    /// The levels menu is opened
     gameLevelsMenu,
+    /// The user is playing
     gameStart,
-    gamePlay
 };
 
 class MainWindow : public QMainWindow
 {
+    /// Tells the compiler that this class has gui elements
     Q_OBJECT
+    /// Disables the option of copying objects of this class
     Q_DISABLE_COPY(MainWindow)
 
   private:
@@ -30,11 +35,11 @@ class MainWindow : public QMainWindow
     void buildInterface();
 
   public slots:
-    // Shows game menu
+    /// Shows game menu
     void showGameMenu();
-    // Shows levels menu
+    /// Shows levels menu
     void showLevelsMenu();
-    // show Start Level
+    /// show Start Level
     void showLevelStart();
 };
 

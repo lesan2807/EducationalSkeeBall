@@ -6,17 +6,17 @@
 class MainWindow;
 
 /**
-    Game controller. An object that represents the game.
+    @brief Game controller. An object that represents the game.
 */
 
 class Game : public QApplication
 {
+    /// Disables the option of copying an object od this class
     Q_DISABLE_COPY(Game)
 
   private:
     /// Main Window:
     MainWindow* mainWindow = nullptr;
-
 
   public:
     /// Constructor

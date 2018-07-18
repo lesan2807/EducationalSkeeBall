@@ -9,12 +9,13 @@ Game::Game(int& argc, char* argv[])
 
 Game::~Game()
 {
+    /// Deletes the main window of the game
     delete this->mainWindow;
 }
 
 int Game::run()
 {
-    // shows Main Window
+    /// shows Main Window
     this->mainWindow = new MainWindow();
     mainWindow->show();
 

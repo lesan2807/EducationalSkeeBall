@@ -4,34 +4,34 @@
 #include <QGraphicsTextItem>
 
 /**
- * @brief A game label on the screen that shows a legend and a counter value
- * For example: to show the player's score, lifes, remaining time
+ * @brief The Score class is a label on the screen that shows a legend and a counter value
  */
+
 class Score : public QGraphicsTextItem
 {
     Q_OBJECT
     Q_DISABLE_COPY(Score)
 
   protected:
-    /// This scores measures something: health, power, bonus, points...
+    /// This scores measures something: points, balls...
     QString legend;
     /// The amount scored
     int score;
 
   public:
     /// Constructor
-    Score(const QString& legend, int initialScore, QColor color, QGraphicsItem *parent = nullptr);
+    Score(const QString& legend, int initialScore, QColor color, QGraphicsItem* parent = nullptr);
     /// Destructor
     ~Score();
-    /// Returns a copy of the current score
+    /// Returns a copy if the current score
     inline int getScore() const { return score; }
-    /// Increase the score and updates the view
-    void increase(int amount = 1);
+    /// Increases the score and updates the view
+    void increase( int amount = 1);
     /// Decreases the score and updates the view
-    void decrease(int amount = 1);
+    void decrease( int amount = 1);
 
   protected:
-    /// Updates the interface to match the int attribute score
+    /// Updates the interface to match the score
     void updateScore();
 };
 
