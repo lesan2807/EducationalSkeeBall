@@ -3,174 +3,92 @@
 
 <skeeball>
 	<level number="1">
-		<big>4</big>
-		<bcord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</bcord>
-		<medium>2</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>0</small>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
 	</level>
 	
 	<level number="2">
-		<big>3</big>
-		<bcord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</bcord>
-		<medium>3</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>0</small>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
 	</level>
 	
 	<level number="3">
-		<big>3</big>
-		<bcord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</bcord>
-		<medium>2</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>1</small>
-		<scord>
-			<cord>()</cord>
-		</scord>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
 	
 	<level number="4">
-		<big>2</big>
-		<bcord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</bcord>
-		<medium>3</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>1</small>
-		<scord>
-			<cord>()</cord>
-		</scord>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
 	
 	<level number="5">
-		<big>2</big>
-		<bcord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</bcord>
-		<medium>2</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>2</small>
-		<scord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</scord>
+		<hole type="big" x="40" y="35"/>
+		<hole type="big" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
 	
 	<level number="6">
-		<big>1</big>
-		<bcord>
-			<cord>()</cord>
-		</bcord>
-		<medium>3</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>2</small>
-		<scord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</scord>
+		<hole type="big" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
 	
 	<level number="7">
-		<big>1</big>
-		<bcord>
-			<cord>()</cord>
-		</bcord>
-		<medium>2</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>3</small>
-		<scord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</scord>
+		<hole type="big" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
 	
 	<level number="8">
-		<big>0</big>
-		<medium>3</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>3</small>
-		<scord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</scord>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
 	
 	<level number="9">
-		<big>0</big>
-		<medium>2</medium>
-		<mcord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</mcord>
-		<small>4</small>
-		<scord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</scord>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
 	
 	<level number="9">
-		<big>0</big>
-		<medium>1</medium>
-		<mcord>
-			<cord>()</cord>
-		</mcord>
-		<small>5</small>
-		<scord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-			<cord>()</cord>
-		</scord>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
 	</level>
-	
-	
-	
+</skeeball>
