@@ -29,10 +29,8 @@ class LevelStart : public QWidget
     Ui::LevelStart *ui;
     /// Scene
     QGraphicsScene *scene;
-    /// Three balls inside the cannon
-    QGraphicsEllipseItem *ballTop;
-    QGraphicsEllipseItem *ballMiddle;
-    QGraphicsEllipseItem *ballDown;
+    /// The ball inside the cannon
+    QGraphicsEllipseItem *ball;
     /// Central circle where the cannon is
     QGraphicsEllipseItem *ellipseShooter;
     /// Big circle where the holes will appear
@@ -53,10 +51,9 @@ class LevelStart : public QWidget
     ~LevelStart();
     /// Adds a graphic item to the scene
     void addElementsToScene();
-    /// Creates a group of graphic items
-    void createGroupElements();
     /// Build the corresponding level
     void buildLevel( int level );
+    void rotateCannon(double angle);
     /// Add the corresponding holes to each level
     void level1(const QString& mode);
     void level2();
@@ -78,10 +75,9 @@ class LevelStart : public QWidget
     void shoot();
     /// The user asked to return to the levels menu
     void gameLevelsAsked();
-
-  private slots:
-    /// When the user changes the angle
-    void on_enterAngle_textChanged(const QString &text);
+private slots:
+    void on_enterAngle_valueChanged(double arg1);
+    void on_shootButton_clicked();
 };
 
 #endif // LEVELSTART_H

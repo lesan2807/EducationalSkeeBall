@@ -101,30 +101,15 @@
          <property name="text">
           <string>Angle</string>
          </property>
-         <property name="buddy">
-          <cstring>enterAngle</cstring>
-         </property>
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="enterAngle">
-         <property name="inputMethodHints">
-          <set>Qt::ImhPreferNumbers</set>
+        <widget class="QDoubleSpinBox" name="enterAngle">
+         <property name="minimum">
+          <double>-1000.000000000000000</double>
          </property>
-         <property name="inputMask">
-          <string>09999</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="maxLength">
-          <number>5</number>
-         </property>
-         <property name="cursorPosition">
-          <number>5</number>
-         </property>
-         <property name="clearButtonEnabled">
-          <bool>false</bool>
+         <property name="maximum">
+          <double>1000.000000000000000</double>
          </property>
         </widget>
        </item>

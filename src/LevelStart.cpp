@@ -15,8 +15,6 @@ LevelStart::LevelStart(QWidget *parent) :
     ui->graphicsView->setScene(scene);
     /// Add the common graphic items of all levels
     addElementsToScene();
-    /// Group the cannon and all the ball inside of it
-    createGroupElements();
     /// Returns to the menu when the menu button is clicked
     this->connect(ui->menuButton, &QPushButton::clicked, this, &LevelStart::gameMenuAsked);
     /// Returns to the levels menu if the return buton is pressed
@@ -30,44 +28,28 @@ LevelStart::LevelStart(QWidget *parent) :
 void LevelStart::addElementsToScene()
 {
     /// Initialize variables as colors
-    QBrush redBrush(Qt::darkRed);
-    QBrush magentaBrush(Qt::darkMagenta);
-    QBrush darkCyanBrush(Qt::darkCyan);
-    QBrush greyBrush(Qt::darkGray);
+    QBrush lightGray(QColor(160,160,160));
+    QBrush cannon(QColor(50,50,50));
+    QBrush darkGray(QColor(80,80,80));
+    QBrush white(Qt::white);
     QPen blackPen(Qt::black);
-    QPen whitePen(Qt::white);
     /// Add the bigger circle to the scene
-    ellipseBackground = scene->addEllipse(10.0, 10.0, 400.0, 400.0, blackPen, darkCyanBrush );
+    ellipseBackground = scene->addEllipse(10.0, 10.0, 400.0, 400.0, blackPen, lightGray );
     /// Add the center circle to the scene
-    ellipseShooter = scene->addEllipse(160.0, 165.0, 100.0, 100.0, blackPen, redBrush);
+    ellipseShooter = scene->addEllipse(160.0, 165.0, 100.0, 100.0, blackPen, darkGray);
     /// Add the cannon to the scene
-    shooter = scene->addRect(203.0, 165.0, 16.0, 50.0, blackPen, magentaBrush);
-    /// Add three balls to the cannon
-    ballTop = scene->addEllipse(203.0, 165.0, 16.0, 16.0, whitePen, greyBrush);
-    ballMiddle = scene->addEllipse(203.0, 181.0, 16.0, 16.0, whitePen, greyBrush);
-    ballDown = scene->addEllipse(203.0, 197.0, 16.0, 16.0, whitePen, greyBrush);
+    shooter = scene->addRect(202.0, 165.0, 16.0, 50.0, blackPen, cannon);
+    /// Add the ball to the cannon
+    ball = scene->addEllipse(202.0, 197.0, 16.0, 16.0, blackPen, white);
     /// Adds the score to the scene
     score = new Score(tr("Score"), 0, Qt::blue);
     score->setPos(-50, 0);
     scene->addItem(this->score);
     /// Adds the number of balls that the user has to the scene
-    score = new Score(tr("Balls"), 3, Qt::blue);
-    score->setPos(380, 0);
-    scene->addItem(this->score);
+    balls = new Score(tr("Balls"), 3, Qt::blue);
+    balls->setPos(380, 0);
+    scene->addItem(this->balls);
 
-}
-
-void LevelStart::createGroupElements()
-{
-    /// Create a list that contains graphic items
-    QList<QGraphicsItem*> items;
-    /// Add the cannon and the three balls to the list
-    items.append(shooter);
-    items.append(ballTop);
-    items.append(ballMiddle);
-    items.append((ballDown));
-    /// Creates a gruop with the items contained in the list
-    group = scene->createItemGroup(items);
 }
 
 LevelStart::~LevelStart()
@@ -78,16 +60,33 @@ LevelStart::~LevelStart()
     delete scene;
 }
 
-void LevelStart::on_enterAngle_textChanged(const QString& text)
+void LevelStart::on_enterAngle_valueChanged(double arg1)
 {
-    /// Avoids receiving an 'unused parameter' warning
-    Q_UNUSED(text);
-    /// If text is an empty QString the shoot button is disabled
-    if( ui->enterAngle->text().trimmed().length() <= 0 )
-        ui->shootButton->setEnabled(false);
-    /// If text is a number the shoot button is enabled
-    else
-        ui->shootButton->setEnabled(true);
+    Q_UNUSED(arg1)
+    ui->shootButton->setEnabled(true);
+}
+
+void LevelStart::rotateCannon( double angle )
+{
+    QPoint point(210,215);
+    QTransform transform;
+    transform.translate(point.x(), point.y());
+    transform.rotate(angle);
+    transform.translate(-point.x(), -point.y());
+    shooter->setTransform(transform);
+    ball->setTransform(transform);
+}
+
+void LevelStart::on_shootButton_clicked()
+{
+    QString text = ui->enterAngle->text();
+    for( int index = 0; index < text.length() && text[index] != ','; ++index )
+    {
+        if( text[index+1] == ',' )
+            text[index+1] = '.';
+    }
+    this->rotateCannon(text.toDouble());
+    balls->decrease();
 }
 
 void LevelStart::buildLevel( int level )
@@ -132,20 +131,20 @@ void LevelStart::level1(const QString &mode)
     /// Changes the text that specifies the game mode between Radians and Degrees
     ui->DegreeOrRadian->setText(mode);
     /// Select the color for the holes
-    QBrush blue(Qt::blue);
-    QBrush purple(Qt::darkMagenta);
-    QBrush yellow(Qt::yellow);
+    QColor smallBalls(QColor(4,255,0));
+    QColor mediumBalls(QColor(3,180,0));
+    QColor bigBalls(QColor(2,130,0));
     QPen blackPen(Qt::black);
     /// Add 4 small holes
-    QGraphicsEllipseItem* small1 = scene->addEllipse(200, 40, 30, 30, blackPen, yellow );
-    QGraphicsEllipseItem* small2 = scene->addEllipse(40, 200, 30, 30, blackPen, yellow );
-    QGraphicsEllipseItem* small3 = scene->addEllipse(230, 350, 30, 30, blackPen, yellow );
-    QGraphicsEllipseItem* small4 = scene->addEllipse(300, 200, 30, 30, blackPen, yellow );
+    QGraphicsEllipseItem* small1 = scene->addEllipse(200, 40, 30, 30, blackPen, smallBalls );
+    QGraphicsEllipseItem* small2 = scene->addEllipse(40, 200, 30, 30, blackPen, smallBalls );
+    QGraphicsEllipseItem* small3 = scene->addEllipse(230, 350, 30, 30, blackPen, smallBalls );
+    QGraphicsEllipseItem* small4 = scene->addEllipse(300, 200, 30, 30, blackPen, smallBalls );
     /// Add 2 medium holes
-    QGraphicsEllipseItem* medium1 = scene->addEllipse(100, 60, 60, 60, blackPen, purple );
-    QGraphicsEllipseItem* medium2 = scene->addEllipse(260, 90, 60, 60, blackPen, purple );
+    QGraphicsEllipseItem* medium1 = scene->addEllipse(100, 60, 60, 60, blackPen, mediumBalls );
+    QGraphicsEllipseItem* medium2 = scene->addEllipse(260, 90, 60, 60, blackPen, mediumBalls );
     /// Add 1 big hole
-    QGraphicsEllipseItem* big1 = scene->addEllipse(70, 250, 90, 90, blackPen, blue );
+    QGraphicsEllipseItem* big1 = scene->addEllipse(70, 250, 90, 90, blackPen, bigBalls );
     Q_UNUSED(small1);
     Q_UNUSED(small2);
     Q_UNUSED(small3);
