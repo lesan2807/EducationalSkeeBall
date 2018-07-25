@@ -1,5 +1,5 @@
 <!ELEMENT level (hole+)>
-<!ATTLIST level number mode #REQUIRED>
+<!ATTLIST level number #IMPLIED>
 
 <!ELEMENT hole (x, y)>
 <!ATTLIST hole
