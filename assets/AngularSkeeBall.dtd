@@ -1,0 +1,7 @@
+<!ELEMENT level (hole+)>
+<!ATTLIST level number mode #REQUIRED>
+
+<!ELEMENT hole (x, y)>
+<!ATTLIST hole
+	x		CDATA	#REQUIRED
+	y 	CDATA	#REQUIRED>
