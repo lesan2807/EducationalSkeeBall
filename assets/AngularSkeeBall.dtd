@@ -3,5 +3,5 @@
 
 <!ELEMENT hole (x, y)>
 <!ATTLIST hole
-	x		CDATA	#REQUIRED
+	x	QCDATA	#REQUIRED
 	y 	CDATA	#REQUIRED>
