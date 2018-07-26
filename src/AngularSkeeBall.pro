@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui widgets svg multimedia
+QT       += core gui widgets svg multimedia xml
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -32,7 +32,11 @@ SOURCES += \
     Hole.cpp \
     LevelStart.cpp \
     Score.cpp \
-    AnimateObject.cpp
+    AnimateObject.cpp \
+    Level.cpp \
+    BigHole.cpp \
+    MediumHole.cpp \
+    SmallHole.cpp
 
 HEADERS += \
     GameMenuView.h \
@@ -42,9 +46,18 @@ HEADERS += \
     Hole.h \
     LevelStart.h \
     Score.h \
-    AnimateObject.h
+    AnimateObject.h \
+    Level.h \
+    BigHole.h \
+    MediumHole.h \
+    SmallHole.h
 
 FORMS += \
     GameMenuView.ui \
     LevelsMenu.ui \
-    LevelStart.ui
+    Level.ui \
+    LevelStart.ui \
+    Level.ui
+
+RESOURCES += \
+    ../assets/assets.qrc
