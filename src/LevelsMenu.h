@@ -32,7 +32,10 @@ class LevelsMenu : public QWidget
     /// The user asked to return to the main menu
     void gameMenuAsked();
     /// The user asked to start playing
-    void startGame();
+    void startGame(QString& mode);
+
+  public slots:
+    void mode();
 };
 
 #endif // LEVELSMENU_H

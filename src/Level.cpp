@@ -4,15 +4,14 @@
 #include <QList>
 
 class MainWindow;
-class Level;
 class QMainWindow;
 class QWidget;
 
 Level::Level(QWidget *parent, int number, int minScore)
-    : number{number}
-    , QWidget(parent)
+    : QWidget(parent)
     , ui(new Ui::Level)
     , minScore{minScore}
+    , number{number}
 {
     /// Set the board as the user interface
     this->ui->setupUi(this);
@@ -47,10 +46,10 @@ Level::~Level()
 #include "BigHole.h"
 #include "MediumHole.h"
 #include "SmallHole.h"
-//#include "BigLooseHole.h"
-//#include "MediumLooseHole.h"
-//#include "SmallLooseHole.h"
-//#include "LooseBallHole.h"
+//#include "BigLoseHole.h"
+//#include "MediumLoseHole.h"
+//#include "SmallLoseHole.h"
+//#include "LoseBallHole.h"
 //#include "WinBallHole.h"
 
 
@@ -73,6 +72,7 @@ bool Level::addHole(const QString &type, double x, double y)
 
 bool Level::loadFrom(const QDomElement &element)
 {
+    Q_UNUSED(element)
     return true;
 }
 

@@ -6,8 +6,9 @@
 #include <QGraphicsScene>
 #include <QGraphicsEllipseItem>
 #include <QGraphicsRectItem>
+#include <QMap>
+#include <QVector>
 #include "Hole.h"
-#include "Ball.h"
 
 namespace Ui
 {
@@ -15,6 +16,7 @@ namespace Ui
 }
 
 class Score;
+class QDomElement;
 
 /**
  * @brief The LevelStart class is a designer form class that represents the game board
@@ -26,12 +28,13 @@ class LevelStart : public QWidget
     Q_OBJECT
 
   private:
+    QMap<int,QVector<Hole*>> levels;
     /// User inteface
     Ui::LevelStart *ui;
     /// Scene
     QGraphicsScene *scene;
     /// The ball inside the cannon
-    QGraphicsEllipseItem* ball;
+    QGraphicsEllipseItem *ball;
     /// Central circle where the cannon is
     QGraphicsEllipseItem *ellipseShooter;
     /// Big circle where the holes will appear
@@ -44,6 +47,8 @@ class LevelStart : public QWidget
     Score* score;
     /// Keeps record of the number of balls the user has
     Score* balls;
+    double angle;
+
 
   public:
     /// Constructor
@@ -52,14 +57,16 @@ class LevelStart : public QWidget
     ~LevelStart();
     /// Adds a graphic item to the scene
     void addElementsToScene();
-    void createGroupElements();
     /// Build the corresponding level
     void buildLevel( int level );
     void rotateCannon(double angle);
     /// Add the corresponding holes to each level
-    void level1(const QString& mode);
-    void moveBall(double move);
-    void delay();
+    void level1( const QString& mode);
+
+  private:
+    int loadLevels();
+    int loadHoles(const QDomElement& rootElement);
+    Hole* createHole(const QString& type);
 
   signals:
     /// The user asked to return to the main menu
@@ -70,7 +77,8 @@ class LevelStart : public QWidget
     void shoot();
     /// The user asked to return to the levels menu
     void gameLevelsAsked();
-private slots:
+
+  private slots:
     void on_enterAngle_valueChanged(double arg1);
     void on_shootButton_clicked();
 };

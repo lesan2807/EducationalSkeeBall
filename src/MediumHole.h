@@ -5,7 +5,7 @@
 
 class MediumHole : public Hole
 {
-public:
+  public:
     MediumHole(double x, double y);
 };
 

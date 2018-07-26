@@ -5,7 +5,7 @@
 
 class BigHole : public Hole
 {
-public:
+  public:
     BigHole(double x, double y);
 };
 

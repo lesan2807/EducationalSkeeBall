@@ -1,11 +1,17 @@
 #include "Hole.h"
+#include <QGraphicsScene>
 #include <QPen>
 #include <QPainter>
-#include <QGraphicsScene>
 
-Hole::Hole(double x, double y)
+Hole::Hole()
+{
+    borde = QPen(Qt::black);
+}
+
+Hole::Hole(double x, double y,  double radius)
     : x {x}
     , y {y}
+    , radius {radius}
 {
 }
 
@@ -33,12 +39,6 @@ void Hole::setRadius(double radius)
     this->radius = radius;
 }
 
-void Hole::setColor(QColor newColor)
-{
-    /// Change the color of hole
-    this->color = newColor;
-}
-
 double Hole::getX()
 {
     /// Return the x coordinate
@@ -53,13 +53,16 @@ double Hole::getY()
 
 double Hole::getRadius()
 {
-    /// Return radius
+    /// Return the radius
     return this->radius;
 }
 
-void Hole::drawHole(double x, double y, QGraphicsScene scene)
+void Hole::addGraphic(QGraphicsScene *scene)
 {
-    ///Draws hole in the scene
-    QGraphicsEllipseItem* hole = scene.addEllipse(x,y,this->radius, this->radius, QPen(Qt::black), this->color);
-    Q_UNUSED(hole);
 }
+
+void Hole::setColor(QBrush color)
+{
+    this->color = color;
+}
+

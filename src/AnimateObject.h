@@ -5,10 +5,6 @@
 
 class Qtimer;
 
-/**
- * @brief An item that moves within the screen
- */
-
 class AnimateObject : public QGraphicsSvgItem
 {
     Q_OBJECT

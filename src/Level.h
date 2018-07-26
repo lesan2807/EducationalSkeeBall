@@ -12,7 +12,6 @@
 
 #include "Hole.h"
 #include "Score.h"
-#include "ui_Level.h"
 #include "MainWindow.h"
 
 class MainWindow;

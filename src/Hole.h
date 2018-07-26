@@ -1,8 +1,9 @@
 #ifndef HOLE_H
 #define HOLE_H
 
-#include<QGraphicsEllipseItem>
-#include<QColor>
+#include <QGraphicsEllipseItem>
+#include <QBrush>
+#include <QPen>
 
 /**
 
@@ -17,35 +18,34 @@ class Hole : public QGraphicsEllipseItem
     double x;
     /// Y coordinate
     double y;
-    /// points
-    int points = 0;
-    /// color of hole
-    QColor color;
-    /// radius
+    /// Hole's radius
     double radius;
-
+    QBrush color;
+    QPen borde;
 
   public:
+    QGraphicsEllipseItem* graphic;
+
+  public:
+    Hole();
     /// Constructor
-    explicit Hole(double x = 0, double y = 0);
+    Hole(double x, double y, double radius);
     /// Destructor
     virtual ~Hole();
     /// Change X coordinate
-    virtual void setX(double x);
+    void setX(double x);
     /// Change Y coordinate
-    virtual void setY(double y);
+    void setY(double y);
     /// Change radius
-    virtual void setRadius(double radius);
-    /// Change color
-    virtual void setColor(QColor newColor);
+    void setRadius(double radius);
     /// Get x coordinate
-    virtual double getX();
+    double getX();
     /// Get y coordinate
-    virtual double getY();
+    double getY();
     /// Get radius
-    virtual double getRadius();
-    /// Draw hole
-    virtual void drawHole(double x, double y, QGraphicsScene scene);
+    double getRadius();
+    void addGraphic(QGraphicsScene* scene);
+    void setColor(QBrush color);
 };
 
 #endif // HOLE_H

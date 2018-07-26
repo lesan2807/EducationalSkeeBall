@@ -36,8 +36,7 @@ SOURCES += \
     Level.cpp \
     BigHole.cpp \
     MediumHole.cpp \
-    SmallHole.cpp \
-    Ball.cpp
+    SmallHole.cpp
 
 HEADERS += \
     GameMenuView.h \
@@ -51,8 +50,7 @@ HEADERS += \
     Level.h \
     BigHole.h \
     MediumHole.h \
-    SmallHole.h \
-    Ball.h
+    SmallHole.h
 
 FORMS += \
     GameMenuView.ui \
@@ -63,3 +61,5 @@ FORMS += \
 
 RESOURCES += \
     ../assets/assets.qrc
+
+DISTFILES +=
