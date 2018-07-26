@@ -25,16 +25,17 @@ class Ball : public AnimateObject
     Ball();
     /// Destructor
     virtual ~Ball();
-    void setInitialPos();
+    void setInitialPos(qreal x, qreal y);
     QGraphicsEllipseItem* addToScene(QGraphicsScene* scene);
     void setTransform(QGraphicsScene* scene, const QTransform &matrix, bool combine = false);
+    /// Move the ball around the scene
+    void move(double angle);
 
 
 signals:
 
 public slots:
-    /// Move the ball around the scene
-    void move();
+
     /// Detect and react to collisions with other elements
     void detectCollisions();
 };

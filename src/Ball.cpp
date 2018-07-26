@@ -7,7 +7,7 @@
 #include <QTimer>
 #include <QSoundEffect>
 #include <QtMath>
-#include <QGraphicsEllipseItem>
+#include <QGraphicsItem>
 
 #include "Ball.h"
 #include "ui_Level.h"
@@ -16,6 +16,10 @@ Ball::Ball()
 {
 
     //connect(timer, &QTimer::timeout, this, &Ball::move);
+    //timer->setInterval(1000);
+    timer->setSingleShot(true);
+    timer->start(750);
+    setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemSendsGeometryChanges);
     // Continuously check for collisions
     QTimer* collisionTimer = new QTimer(this);
     connect(collisionTimer, &QTimer::timeout, this, &Ball::detectCollisions);
@@ -29,10 +33,10 @@ Ball::~Ball()
 
 }
 
-void Ball::setInitialPos()
+void Ball::setInitialPos(qreal x, qreal y)
 {
     // Place the ball
-    setPos(QPointF(202.0, 197.0));
+    setPos(QPointF(x, y));
 }
 
 
@@ -47,28 +51,14 @@ void Ball::setTransform(QGraphicsScene *scene, const QTransform &matrix, bool co
 {
     QGraphicsEllipseItem* ball = this->addToScene(scene);
     ball->setTransform(matrix,combine);
+    scene->removeItem(ball);
 }
 
 
-void Ball::move()
+void Ball::move(double angle)
 {
-    this->moveAnimation = new QPropertyAnimation(this, "pos");
-    this->moveAnimation->setStartValue(QPointF(202.0, 197.0));
-
-    // To a random point within the scene/screen
-    float targetX = 202.0;
-    float targetY = scene()->height();
-    QPointF endPos(targetX, targetY);
-    this->moveAnimation->setEndValue(endPos);
-
-    // The duration is proportional to the max distance possible
-    double distance = std::hypot(targetX - 202.0, targetY - 197.0);
-    double screenDiagonal = std::hypot(scene()->width(), scene()->height());
-    int duration = distance / screenDiagonal * 1500.0;
-    this->moveAnimation->setDuration(duration);
-
-    // Start the animation
-    this->moveAnimation->start();
+    if(int(angle) % 360 == 0)
+        this->setY(90);
 }
 
 #include "Hole.h"

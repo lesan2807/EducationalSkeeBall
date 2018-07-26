@@ -31,7 +31,7 @@ class LevelStart : public QWidget
     /// Scene
     QGraphicsScene *scene;
     /// The ball inside the cannon
-    Ball* ball;
+    QGraphicsEllipseItem* ball;
     /// Central circle where the cannon is
     QGraphicsEllipseItem *ellipseShooter;
     /// Big circle where the holes will appear
@@ -58,6 +58,8 @@ class LevelStart : public QWidget
     void rotateCannon(double angle);
     /// Add the corresponding holes to each level
     void level1(const QString& mode);
+    void moveBall(double move);
+    void delay();
 
   signals:
     /// The user asked to return to the main menu

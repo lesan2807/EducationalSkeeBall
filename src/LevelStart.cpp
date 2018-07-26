@@ -2,6 +2,9 @@
 #include "Score.h"
 #include "ui_LevelStart.h"
 #include <QList>
+#include <QTime>
+#include <QtMath>
+
 
 LevelStart::LevelStart(QWidget *parent) :
     QWidget(parent),
@@ -13,7 +16,7 @@ LevelStart::LevelStart(QWidget *parent) :
     scene = new QGraphicsScene(this);
     /// Set the graphic scene of the view
     ui->graphicsView->setScene(scene);
-    ball = new Ball();
+    ball = new QGraphicsEllipseItem();
     /// Add the common graphic items of all levels
     addElementsToScene();
     this->createGroupElements();
@@ -22,8 +25,7 @@ LevelStart::LevelStart(QWidget *parent) :
     /// Returns to the levels menu if the return buton is pressed
     this->connect(ui->returnButton, &QPushButton::clicked, this, &LevelStart::gameLevelsAsked);
     /// Shoots ball
-
-    this->connect(ui->shootButton, &QPushButton::clicked, ball, &Ball::move);
+    this->connect(ui->shootButton, &QPushButton::clicked, this, &LevelStart::shoot);
     /// If the user presses the Exit button the game closes
     this->connect(ui->exitButton, &QPushButton::clicked, parent, &QWidget::close);
 }
@@ -43,7 +45,7 @@ void LevelStart::addElementsToScene()
     /// Add the cannon to the scene
     shooter = scene->addRect(202.0, 165.0, 16.0, 50.0, blackPen, cannon);
     /// Add the ball to the cannon
-    QGraphicsEllipseItem* tempBall = ball->addToScene(scene);
+    ball = scene->addEllipse(202.0, 197.0, 16.0, 16.0, QPen(Qt::black), QColor(Qt::white));
     /// Adds the score to the scene
     score = new Score(tr("Score"), 0, Qt::blue);
     score->setPos(-50, 0);
@@ -52,7 +54,6 @@ void LevelStart::addElementsToScene()
     balls = new Score(tr("Balls"), 3, Qt::blue);
     balls->setPos(380, 0);
     scene->addItem(this->balls);
-    scene->removeItem(tempBall);
 }
 
 void LevelStart::createGroupElements()
@@ -82,7 +83,7 @@ void LevelStart::rotateCannon( double angle )
     transform.rotate(angle);
     transform.translate(-point.x(), -point.y());
     shooter->setTransform(transform);
-    ball->setTransform(scene, transform);
+    ball->setTransform(transform);
 }
 
 void LevelStart::on_shootButton_clicked()
@@ -94,7 +95,26 @@ void LevelStart::on_shootButton_clicked()
             text[index+1] = '.';
     }
     this->rotateCannon(text.toDouble());
+    this->moveBall(text.toDouble());
     balls->decrease();
+}
+
+#include <iostream>
+
+void LevelStart::moveBall(double move)
+{
+    qreal xTemp = ball->x();
+    qreal yTemp = ball->y();
+    {
+        for(int index = 0; index < 180; ++index)
+        {
+            ball->setX((ball->x()+qCos(qDegreesToRadians(move))));
+            ball->setY((ball->y()+qSin(qDegreesToRadians(move))));
+            delay();
+        }
+    }
+    ball->setX(xTemp);
+    ball->setY(yTemp);
 }
 
 void LevelStart::buildLevel( int level )
@@ -105,6 +125,13 @@ void LevelStart::buildLevel( int level )
         //this->level1();
         break;
     }
+}
+
+void LevelStart::delay()
+{
+    QTime dieTime = QTime::currentTime().addMSecs(28);
+    while(QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
 
 void LevelStart::level1(const QString &mode)
