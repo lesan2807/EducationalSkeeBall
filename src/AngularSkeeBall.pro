@@ -36,7 +36,8 @@ SOURCES += \
     Level.cpp \
     BigHole.cpp \
     MediumHole.cpp \
-    SmallHole.cpp
+    SmallHole.cpp \
+    Ball.cpp
 
 HEADERS += \
     GameMenuView.h \
@@ -50,7 +51,8 @@ HEADERS += \
     Level.h \
     BigHole.h \
     MediumHole.h \
-    SmallHole.h
+    SmallHole.h \
+    Ball.h
 
 FORMS += \
     GameMenuView.ui \

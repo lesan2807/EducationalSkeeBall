@@ -13,14 +13,17 @@ LevelStart::LevelStart(QWidget *parent) :
     scene = new QGraphicsScene(this);
     /// Set the graphic scene of the view
     ui->graphicsView->setScene(scene);
+    ball = new Ball();
     /// Add the common graphic items of all levels
     addElementsToScene();
+    this->createGroupElements();
     /// Returns to the menu when the menu button is clicked
     this->connect(ui->menuButton, &QPushButton::clicked, this, &LevelStart::gameMenuAsked);
     /// Returns to the levels menu if the return buton is pressed
     this->connect(ui->returnButton, &QPushButton::clicked, this, &LevelStart::gameLevelsAsked);
     /// Shoots ball
-    this->connect(ui->shootButton, &QPushButton::clicked, this, &LevelStart::shoot);
+
+    this->connect(ui->shootButton, &QPushButton::clicked, ball, &Ball::move);
     /// If the user presses the Exit button the game closes
     this->connect(ui->exitButton, &QPushButton::clicked, parent, &QWidget::close);
 }
@@ -40,7 +43,7 @@ void LevelStart::addElementsToScene()
     /// Add the cannon to the scene
     shooter = scene->addRect(202.0, 165.0, 16.0, 50.0, blackPen, cannon);
     /// Add the ball to the cannon
-    ball = scene->addEllipse(202.0, 197.0, 16.0, 16.0, blackPen, white);
+    QGraphicsEllipseItem* tempBall = ball->addToScene(scene);
     /// Adds the score to the scene
     score = new Score(tr("Score"), 0, Qt::blue);
     score->setPos(-50, 0);
@@ -49,11 +52,16 @@ void LevelStart::addElementsToScene()
     balls = new Score(tr("Balls"), 3, Qt::blue);
     balls->setPos(380, 0);
     scene->addItem(this->balls);
+    scene->removeItem(tempBall);
+}
 
+void LevelStart::createGroupElements()
+{
 }
 
 LevelStart::~LevelStart()
 {
+    delete ball;
     /// Destroys the user interface
     delete ui;
     /// Destroys the scene
@@ -74,7 +82,7 @@ void LevelStart::rotateCannon( double angle )
     transform.rotate(angle);
     transform.translate(-point.x(), -point.y());
     shooter->setTransform(transform);
-    ball->setTransform(transform);
+    ball->setTransform(scene, transform);
 }
 
 void LevelStart::on_shootButton_clicked()

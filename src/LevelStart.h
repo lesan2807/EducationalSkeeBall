@@ -7,6 +7,7 @@
 #include <QGraphicsEllipseItem>
 #include <QGraphicsRectItem>
 #include "Hole.h"
+#include "Ball.h"
 
 namespace Ui
 {
@@ -30,7 +31,7 @@ class LevelStart : public QWidget
     /// Scene
     QGraphicsScene *scene;
     /// The ball inside the cannon
-    QGraphicsEllipseItem *ball;
+    Ball* ball;
     /// Central circle where the cannon is
     QGraphicsEllipseItem *ellipseShooter;
     /// Big circle where the holes will appear
@@ -51,6 +52,7 @@ class LevelStart : public QWidget
     ~LevelStart();
     /// Adds a graphic item to the scene
     void addElementsToScene();
+    void createGroupElements();
     /// Build the corresponding level
     void buildLevel( int level );
     void rotateCannon(double angle);
