@@ -129,10 +129,12 @@ void LevelStart::moveBall()
 
 void LevelStart::delay()
 {
-    QTime dieTime = QTime::currentTime().addMSecs(10);
+    QTime dieTime = QTime::currentTime().addMSecs(5);
     while(QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
+
+#include <iostream>
 
 bool LevelStart::checkCollision()
 {
@@ -157,13 +159,14 @@ bool LevelStart::checkCollision()
 
 void LevelStart::buildLevel( int level )
 {
-    //QMap<int,QVector<Hole*>>::iterator it = levels.begin();
-    //for( int index = 0; index < it.value().count(); ++index )
-        //scene->addEllipse(it.value().at(index)->graphic);
-    /*if( it == levels.end() )
+    Q_UNUSED(level);
+    QMap<int,QVector<Hole*>>::iterator it = this->levels.begin();
+    for( int index = 0; index < it.value().count(); ++index )
+        scene->addItem(it.value().at(index)->graphic);
+    if( it == levels.end() )
         ui->DegreeOrRadian->setText(tr("Nada guardado en el mapa"));
     else
-        ui->DegreeOrRadian->setText(tr("Size=%1 (%2,%3)").arg(it.value().count()).arg(0).arg(0));*/
+        ui->DegreeOrRadian->setText(tr("Size=%1 (%2,%3)").arg(it.value().count()).arg(0).arg(0));
 }
 
 int LevelStart::loadLevels()
@@ -246,26 +249,33 @@ void LevelStart::level1(const QString &mode)
     /// Add 4 small holes
     QGraphicsEllipseItem* small1 = scene->addEllipse(200, 40, 30, 30, blackPen, smallBalls );
     Hole* hole1 = new Hole(small1);
+    hole1->setScore(500);
     holes.push_back(hole1);
     QGraphicsEllipseItem* small2 = scene->addEllipse(40, 200, 30, 30, blackPen, smallBalls );
     Hole* hole2 = new Hole(small2);
+    hole2->setScore(500);
     holes.push_back(hole2);
     QGraphicsEllipseItem* small3 = scene->addEllipse(230, 350, 30, 30, blackPen, smallBalls );
     Hole* hole3 = new Hole(small3);
+    hole3->setScore(500);
     holes.push_back(hole3);
     QGraphicsEllipseItem* small4 = scene->addEllipse(300, 200, 30, 30, blackPen, smallBalls );
     Hole* hole4 = new Hole(small4);
+    hole4->setScore(500);
     holes.push_back(hole4);
     /// Add 2 medium holes
     QGraphicsEllipseItem* medium1 = scene->addEllipse(100, 60, 60, 60, blackPen, mediumBalls );
     Hole* hole5 = new Hole(medium1);
+    hole5->setScore(200);
     holes.push_back(hole5);
     QGraphicsEllipseItem* medium2 = scene->addEllipse(260, 90, 60, 60, blackPen, mediumBalls );
     Hole* hole6 = new Hole(medium2);
+    hole6->setScore(200);
     holes.push_back(hole6);
     /// Add 1 big hole
     QGraphicsEllipseItem* big1 = scene->addEllipse(70, 250, 90, 90, blackPen, bigBalls );
     Hole* hole7 = new Hole(big1);
+    hole7->setScore(100);
     holes.push_back(hole7);
     /// Add the ball to the cannon
     ball = scene->addEllipse(202.0, 197.0, 16.0, 16.0, blackPen, Qt::white);

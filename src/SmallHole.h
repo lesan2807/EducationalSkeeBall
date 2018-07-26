@@ -7,6 +7,8 @@ class SmallHole : public Hole
 {
   public:
     SmallHole(double x, double y);
+    virtual int getScore() const override;
+
 };
 
 #endif // SMALLHOLE_H

@@ -8,6 +8,9 @@
 #include "ui_LevelsMenu.h"
 #include "ui_LevelStart.h"
 #include <QDesktopWidget>
+#include "Level.h"
+#include "ui_Level.h"
+#include <QVector>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -88,3 +91,5 @@ void MainWindow::showLevelStart()
     /// Now the application is in start level state
     this->state = GameState::gameStart;
 }
+
+

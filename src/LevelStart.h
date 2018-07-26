@@ -28,7 +28,7 @@ class LevelStart : public QWidget
     Q_OBJECT
 
   private:
-    //QMap<int,QVector<Hole*>> levels;
+    QMap<int,QVector<Hole*>> levels;
     QVector<Hole*> holes;
     /// User inteface
     Ui::LevelStart *ui;

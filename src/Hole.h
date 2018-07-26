@@ -47,7 +47,8 @@ class Hole : public QGraphicsEllipseItem
     /// Get radius
     double getRadius();
     void setColor(QBrush color);
-    int getScore();
+    void setScore(int score);
+    virtual int getScore() const;
 };
 
 #endif // HOLE_H

@@ -1,6 +1,7 @@
 #include "SmallHole.h"
 #include <QBrush>
 #include <QGraphicsScene>
+#include <iostream>
 
 SmallHole::SmallHole(double x, double y)
 {
@@ -11,5 +12,13 @@ SmallHole::SmallHole(double x, double y)
     graphic = new QGraphicsEllipseItem(this->x,this->y,radius,radius);
     this->score = 500;
 }
+
+int SmallHole::getScore() const
+{
+    std::cerr << "why";
+    return 500;
+}
+
+
 
 
