@@ -69,7 +69,7 @@ void MainWindow::showLevelStart()
     /// Get the name of the object that sended the signal
     QString name = QObject::sender()->objectName();
     QString mode;
-    /// If the signal to start playig was sent by the LevelsMenu, the mode can be either Radians or Degrees
+    /// If the signal to start playing was sent by the LevelsMenu, the mode can be either Radians or Degrees
     if( name == "LevelsMenu" )
         mode = "Radians or Degrees";
     /// If the signal to start playing was sent by the GameMenuVie, the mode is Degrees

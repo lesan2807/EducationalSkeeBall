@@ -96,33 +96,6 @@ void LevelStart::buildLevel( int level )
     case 1:
         //this->level1();
         break;
-    case 2:
-        this->level2();
-        break;
-    case 3:
-        this->level3();
-        break;
-    case 4:
-        this->level4();
-        break;
-    case 5:
-        this->level5();
-        break;
-    case 6:
-        this->level6();
-        break;
-    case 7:
-        this->level7();
-        break;
-    case 8:
-        this->level8();
-        break;
-    case 9:
-        this->level9();
-        break;
-    case 10:
-        this->level10();
-        break;
     }
 }
 
@@ -152,49 +125,4 @@ void LevelStart::level1(const QString &mode)
     Q_UNUSED(medium1);
     Q_UNUSED(medium2);
     Q_UNUSED(big1);
-}
-
-void LevelStart::level2()
-{
-
-}
-
-void LevelStart::level3()
-{
-
-}
-
-void LevelStart::level4()
-{
-
-}
-
-void LevelStart::level5()
-{
-
-}
-
-void LevelStart::level6()
-{
-
-}
-
-void LevelStart::level7()
-{
-
-}
-
-void LevelStart::level8()
-{
-
-}
-
-void LevelStart::level9()
-{
-
-}
-
-void LevelStart::level10()
-{
-
 }

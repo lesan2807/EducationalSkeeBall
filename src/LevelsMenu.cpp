@@ -12,7 +12,7 @@ LevelsMenu::LevelsMenu(QWidget *parent) :
     /// Returns to the menu when the return button is clicked
     this->connect( ui->returnButtton, &QPushButton::clicked, this, &LevelsMenu::gameMenuAsked );
 
-    /// All the level buttons alows the user to start playing
+    /// All the level buttons allows the user to start playing
     this->connect( ui->degreesLvl1, &QPushButton::clicked, this, &LevelsMenu::startGame );
     this->connect( ui->degreesLvl2, &QPushButton::clicked, this, &LevelsMenu::startGame );
     this->connect( ui->degreesLvl3, &QPushButton::clicked, this, &LevelsMenu::startGame );

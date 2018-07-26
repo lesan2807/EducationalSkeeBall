@@ -56,15 +56,6 @@ class LevelStart : public QWidget
     void rotateCannon(double angle);
     /// Add the corresponding holes to each level
     void level1(const QString& mode);
-    void level2();
-    void level3();
-    void level4();
-    void level5();
-    void level6();
-    void level7();
-    void level8();
-    void level9();
-    void level10();
 
   signals:
     /// The user asked to return to the main menu
