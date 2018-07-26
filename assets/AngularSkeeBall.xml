@@ -2,71 +2,62 @@
 <!DOCTYPE skeeball SYSTEM "AngularSkeeBall.dtd">
 
 <skeeball>
-	<level number="1">
+        <level number="1" score = "300">
 		<hole type="big" x="40" y="35"/>
 		<hole type="big" x="40" y="35"/>
 		<hole type="big" x="40" y="35"/>
-		<hole type="big" x="40" y="35"/>
+                <hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
+                <hole type="small" x="40" y="35"/>
 	</level>
 	
-	<level number="2">
+        <level number="2" score = "500">
 		<hole type="big" x="40" y="35"/>
 		<hole type="big" x="40" y="35"/>
-		<hole type="big" x="40" y="35"/>
+                <hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
-	</level>
+                <hole type="small" x="40" y="35"/>
+                <hole type="small" x="40" y="35"/>
+        </level>
 	
-	<level number="3">
+        <level number="3" score = "700">
 		<hole type="big" x="40" y="35"/>
-		<hole type="big" x="40" y="35"/>
-		<hole type="big" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
-		<hole type="small" x="40" y="35"/>
-	</level>
-	
-	<level number="4">
-		<hole type="big" x="40" y="35"/>
-		<hole type="big" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
+                <hole type="medium" x="40" y="35"/>
+                <hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
 	</level>
 	
-	<level number="5">
-		<hole type="big" x="40" y="35"/>
-		<hole type="big" x="40" y="35"/>
+        <level number="4" score = "900">
+                <hole type="medium" x="40" y="35"/>
+                <hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
+                <hole type="medium" x="40" y="35"/>
+                <hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+	</level>
+	
+        <level number="5" score = "1100">
+                <hole type="medium" x="40" y="35"/>
+                <hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
+                <hole type="small" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
 	</level>
 	
-	<level number="6">
-		<hole type="big" x="40" y="35"/>
+        <level number="6" score = "1300">
+                <hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
+                <hole type="small" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
 	</level>
 	
-	<level number="7">
+        <level number="7" score = "1500">
 		<hole type="big" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
-		<hole type="medium" x="40" y="35"/>
-		<hole type="small" x="40" y="35"/>
-		<hole type="small" x="40" y="35"/>
-		<hole type="small" x="40" y="35"/>
-	</level>
-	
-	<level number="8">
-		<hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
@@ -74,7 +65,16 @@
 		<hole type="small" x="40" y="35"/>
 	</level>
 	
-	<level number="9">
+        <level number="8" score = "1700">
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="medium" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+		<hole type="small" x="40" y="35"/>
+	</level>
+	
+        <level number="9" score = "1900">
 		<hole type="medium" x="40" y="35"/>
 		<hole type="medium" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
@@ -83,7 +83,7 @@
 		<hole type="small" x="40" y="35"/>
 	</level>
 	
-	<level number="9">
+        <level number="10" score = "2100">
 		<hole type="medium" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
 		<hole type="small" x="40" y="35"/>
