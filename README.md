@@ -23,7 +23,7 @@ The different types of holes in the game are: \
 The holes that do not have balls, will be color coded. Some will be in green tones, and will add to the score, others will be in red tones, and will decrease the score. The holes with black balls will remove the number of balls you have. The holes with white balls will add to the number of balls you have. 
 
 The different levels in the game are: \
-![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/holes.png)\
+![Image](https://github.com/lesan2807/EducationalSkeeBall/blob/master/levels.png)\
 Each level has a minimun of points to win the level: \ 
 Level 1: 300 \
 Level 2: 500 \
