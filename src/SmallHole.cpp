@@ -9,6 +9,7 @@ SmallHole::SmallHole(double x, double y)
     this->setRadius(18.4);
     this->setColor(QColor(4,255,0));
     graphic = new QGraphicsEllipseItem(this->x,this->y,radius,radius);
+    this->score = 500;
 }
 
 

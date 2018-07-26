@@ -6,6 +6,8 @@
 #include "ui_LevelStart.h"
 #include <QDomDocument>
 #include <QList>
+#include <QtMath>
+#include <QTime>
 
 LevelStart::LevelStart(QWidget *parent) :
     QWidget(parent),
@@ -45,8 +47,6 @@ void LevelStart::addElementsToScene()
     ellipseShooter = scene->addEllipse(160.0, 165.0, 100.0, 100.0, blackPen, darkGray);
     /// Add the cannon to the scene
     shooter = scene->addRect(202.0, 165.0, 16.0, 50.0, blackPen, cannon);
-    /// Add the ball to the cannon
-    ball = scene->addEllipse(202.0, 197.0, 16.0, 16.0, blackPen, white);
     /// Adds the score to the scene
     score = new Score(tr("Score"), 0, Qt::blue);
     score->setPos(-50, 0);
@@ -55,7 +55,6 @@ void LevelStart::addElementsToScene()
     balls = new Score(tr("Balls"), 3, Qt::blue);
     balls->setPos(380, 0);
     scene->addItem(this->balls);
-    angle = 0;
 }
 
 LevelStart::~LevelStart()
@@ -64,7 +63,7 @@ LevelStart::~LevelStart()
     delete ui;
     /// Destroys the scene
     delete scene;
-    levels.clear();
+    //levels.clear();
 }
 
 void LevelStart::on_enterAngle_valueChanged(double arg1)
@@ -98,11 +97,67 @@ void LevelStart::on_shootButton_clicked()
     balls->decrease();
     if( balls->getScore() == 0 )
         ui->shootButton->setEnabled(false);
+    this->moveBall();
+}
+
+void LevelStart::moveBall()
+{
+    ui->shootButton->setEnabled(false);
+    ui->returnButton->setEnabled(false);
+    ui->exitButton->setEnabled(false);
+    ui->menuButton->setEnabled(false);
+    double move = angle - 90.0;
+    qreal xTemp = ball->x();
+    qreal yTemp = ball->y();
+    for(int index = 0; index < 180 && !checkCollision(); ++index)
+    {
+        ball->setX((ball->x()+qCos(qDegreesToRadians(move))));
+        ball->setY((ball->y()+qSin(qDegreesToRadians(move))));
+        delay();
+    }
+    ball->setX(xTemp);
+    ball->setY(yTemp);
+    QTime* time = new QTime;
+    angle = qrand()*time->currentTime().msec() % 360;
+    this->rotateCannon(angle);
+    if( balls->getScore() > 0 )
+        ui->shootButton->setEnabled(true);
+    ui->returnButton->setEnabled(true);
+    ui->exitButton->setEnabled(true);
+    ui->menuButton->setEnabled(true);
+}
+
+void LevelStart::delay()
+{
+    QTime dieTime = QTime::currentTime().addMSecs(10);
+    while(QTime::currentTime() < dieTime)
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+}
+
+bool LevelStart::checkCollision()
+{
+    /// Traverse all graphic items that are colliding with the ball
+    const QList<QGraphicsItem*>& items = ball->collidingItems();
+    for(int index = 0; index < items.count(); ++index)
+    {
+        if( items[index] != ellipseBackground && items[index] != ellipseShooter && items[index] != shooter )
+        {
+            for( int hole = 0; hole < holes.count(); ++hole )
+            {
+                if( holes[hole]->graphic->x() == items[index]->x() )
+                {
+                    score->increase(holes[hole]->getScore());
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 }
 
 void LevelStart::buildLevel( int level )
 {
-    QMap<int,QVector<Hole*>>::iterator it = levels.begin();
+    //QMap<int,QVector<Hole*>>::iterator it = levels.begin();
     //for( int index = 0; index < it.value().count(); ++index )
         //scene->addEllipse(it.value().at(index)->graphic);
     /*if( it == levels.end() )
@@ -147,7 +202,7 @@ int LevelStart::loadHoles(const QDomElement& rootElement)
             /// Use the type attribute required to create a question object
             const QString& number = element.attribute("number");
             level = number.toInt();
-            levels.insert(level,vector);
+            //levels.insert(level,vector);
         }
         if( element.tagName() == "hole" )
         {
@@ -163,15 +218,15 @@ int LevelStart::loadHoles(const QDomElement& rootElement)
             if( type == "medium" )
             {
                 Hole* hole = new MediumHole(x,y);
-                while( (it = levels.find(level)) == levels.end() )
-                    levels.insert(level,vector);
+                //while( (it = levels.find(level)) == levels.end() )
+                //    levels.insert(level,vector);
                 it.value().push_back(hole);
             }
             if( type == "small" )
             {
                 Hole* hole = new SmallHole(x,y);
-                while( (it = levels.find(level)) == levels.end() )
-                    levels.insert(level,vector);
+                //while( (it = levels.find(level)) == levels.end() )
+                //    levels.insert(level,vector);
                 it.value().push_back(hole);
             }
         }
@@ -182,7 +237,7 @@ int LevelStart::loadHoles(const QDomElement& rootElement)
 void LevelStart::level1(const QString &mode)
 {
     /// Changes the text that specifies the game mode between Radians and Degrees
-    //ui->DegreeOrRadian->setText(mode);
+    ui->DegreeOrRadian->setText(mode);
     /// Select the color for the holes
     QColor smallBalls(QColor(4,255,0));
     QColor mediumBalls(QColor(3,180,0));
@@ -190,14 +245,30 @@ void LevelStart::level1(const QString &mode)
     QPen blackPen(Qt::black);
     /// Add 4 small holes
     QGraphicsEllipseItem* small1 = scene->addEllipse(200, 40, 30, 30, blackPen, smallBalls );
+    Hole* hole1 = new Hole(small1);
+    holes.push_back(hole1);
     QGraphicsEllipseItem* small2 = scene->addEllipse(40, 200, 30, 30, blackPen, smallBalls );
+    Hole* hole2 = new Hole(small2);
+    holes.push_back(hole2);
     QGraphicsEllipseItem* small3 = scene->addEllipse(230, 350, 30, 30, blackPen, smallBalls );
+    Hole* hole3 = new Hole(small3);
+    holes.push_back(hole3);
     QGraphicsEllipseItem* small4 = scene->addEllipse(300, 200, 30, 30, blackPen, smallBalls );
+    Hole* hole4 = new Hole(small4);
+    holes.push_back(hole4);
     /// Add 2 medium holes
     QGraphicsEllipseItem* medium1 = scene->addEllipse(100, 60, 60, 60, blackPen, mediumBalls );
+    Hole* hole5 = new Hole(medium1);
+    holes.push_back(hole5);
     QGraphicsEllipseItem* medium2 = scene->addEllipse(260, 90, 60, 60, blackPen, mediumBalls );
+    Hole* hole6 = new Hole(medium2);
+    holes.push_back(hole6);
     /// Add 1 big hole
     QGraphicsEllipseItem* big1 = scene->addEllipse(70, 250, 90, 90, blackPen, bigBalls );
+    Hole* hole7 = new Hole(big1);
+    holes.push_back(hole7);
+    /// Add the ball to the cannon
+    ball = scene->addEllipse(202.0, 197.0, 16.0, 16.0, blackPen, Qt::white);
     Q_UNUSED(small1);
     Q_UNUSED(small2);
     Q_UNUSED(small3);
@@ -205,4 +276,7 @@ void LevelStart::level1(const QString &mode)
     Q_UNUSED(medium1);
     Q_UNUSED(medium2);
     Q_UNUSED(big1);
+    QTime* time = new QTime();
+    angle = qrand()*time->currentTime().msec() % 360;
+    this->rotateCannon(angle);
 }

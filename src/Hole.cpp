@@ -8,6 +8,11 @@ Hole::Hole()
     borde = QPen(Qt::black);
 }
 
+Hole::Hole(QGraphicsEllipseItem *ellipse)
+{
+    graphic = ellipse;
+}
+
 Hole::Hole(double x, double y,  double radius)
     : x {x}
     , y {y}
@@ -57,12 +62,13 @@ double Hole::getRadius()
     return this->radius;
 }
 
-void Hole::addGraphic(QGraphicsScene *scene)
-{
-}
-
 void Hole::setColor(QBrush color)
 {
     this->color = color;
+}
+
+int Hole::getScore()
+{
+    return this->score;
 }
 

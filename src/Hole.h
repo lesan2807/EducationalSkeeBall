@@ -22,12 +22,14 @@ class Hole : public QGraphicsEllipseItem
     double radius;
     QBrush color;
     QPen borde;
+    int score;
 
   public:
     QGraphicsEllipseItem* graphic;
 
   public:
     Hole();
+    Hole(QGraphicsEllipseItem* ellipse);
     /// Constructor
     Hole(double x, double y, double radius);
     /// Destructor
@@ -44,8 +46,8 @@ class Hole : public QGraphicsEllipseItem
     double getY();
     /// Get radius
     double getRadius();
-    void addGraphic(QGraphicsScene* scene);
     void setColor(QBrush color);
+    int getScore();
 };
 
 #endif // HOLE_H

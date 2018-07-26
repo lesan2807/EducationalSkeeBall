@@ -79,7 +79,7 @@ void MainWindow::showLevelStart()
     LevelStart* start = new LevelStart(this);
     this->setCentralWidget(start);
     /// Tells the level which mode the user chose
-    start->buildLevel(1);
+    start->level1( " " );
     /// Return to the menu if the Menu button is pressed
     this->connect( start,  &LevelStart::gameMenuAsked, this, &MainWindow::showGameMenu );
     /// Return to the menu if the Return button is pressed

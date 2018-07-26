@@ -28,7 +28,8 @@ class LevelStart : public QWidget
     Q_OBJECT
 
   private:
-    QMap<int,QVector<Hole*>> levels;
+    //QMap<int,QVector<Hole*>> levels;
+    QVector<Hole*> holes;
     /// User inteface
     Ui::LevelStart *ui;
     /// Scene
@@ -62,6 +63,9 @@ class LevelStart : public QWidget
     void rotateCannon(double angle);
     /// Add the corresponding holes to each level
     void level1( const QString& mode);
+    void moveBall();
+    void delay();
+    bool checkCollision();
 
   private:
     int loadLevels();
