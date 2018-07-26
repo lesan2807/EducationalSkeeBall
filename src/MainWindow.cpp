@@ -8,9 +8,6 @@
 #include "ui_LevelsMenu.h"
 #include "ui_LevelStart.h"
 #include <QDesktopWidget>
-#include "Level.h"
-#include "ui_Level.h"
-#include <QVector>
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -82,7 +79,7 @@ void MainWindow::showLevelStart()
     LevelStart* start = new LevelStart(this);
     this->setCentralWidget(start);
     /// Tells the level which mode the user chose
-    start->level1( " " );
+    start->level1( "Degrees" );
     /// Return to the menu if the Menu button is pressed
     this->connect( start,  &LevelStart::gameMenuAsked, this, &MainWindow::showGameMenu );
     /// Return to the menu if the Return button is pressed
@@ -91,5 +88,3 @@ void MainWindow::showLevelStart()
     /// Now the application is in start level state
     this->state = GameState::gameStart;
 }
-
-

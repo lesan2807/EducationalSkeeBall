@@ -57,7 +57,6 @@ FORMS += \
     LevelsMenu.ui \
     Level.ui \
     LevelStart.ui \
-    Level.ui
 
 RESOURCES += \
     ../assets/assets.qrc

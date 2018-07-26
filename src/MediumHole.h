@@ -6,8 +6,7 @@
 class MediumHole : public Hole
 {
   public:
-    MediumHole(double x, double y); 
-    virtual int getScore() const override;
+    MediumHole(double x, double y);
 };
 
 #endif // MEDIUMHOLE_H

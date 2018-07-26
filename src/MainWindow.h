@@ -2,11 +2,6 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "Level.h"
-#include "ui_Level.h"
-#include <QVector>
-
-class Level;
 
 enum class GameState
 {
@@ -19,8 +14,6 @@ enum class GameState
     /// The user is playing
     gameStart,
 };
-
-#include <QVector>
 
 class MainWindow : public QMainWindow
 {
@@ -40,7 +33,6 @@ class MainWindow : public QMainWindow
     ~MainWindow();
     /// builds the interface
     void buildInterface();
-    void buildLevel(int number, QVector<Level*> levels);
 
   public slots:
     /// Shows game menu

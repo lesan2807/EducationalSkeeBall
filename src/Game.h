@@ -2,9 +2,6 @@
 #define GAME_H
 
 #include <QApplication>
-#include <QDomElement>
-#include "Hole.h"
-#include "Level.h"
 
 class MainWindow;
 
@@ -20,7 +17,6 @@ class Game : public QApplication
   private:
     /// Main Window:
     MainWindow* mainWindow = nullptr;
-    QVector<Level*> levels;
 
   public:
     /// Constructor
@@ -31,14 +27,6 @@ class Game : public QApplication
     int run();
     /// Play the given filename as background music
     void playBackgroundMusic(const QString& audioFilename);
-
-
-  private:
-    int loadLevels();
-    int loadHoles(const QDomElement& rootElement);
-    Hole* createHole(const QString& type);
-
- signals:
 
 
 };

@@ -59,6 +59,8 @@ void LevelStart::addElementsToScene()
 
 LevelStart::~LevelStart()
 {
+    for(long long index = 0; index < holes.size(); ++index)
+        delete holes[index];
     /// Destroys the user interface
     delete ui;
     /// Destroys the scene
@@ -129,12 +131,10 @@ void LevelStart::moveBall()
 
 void LevelStart::delay()
 {
-    QTime dieTime = QTime::currentTime().addMSecs(5);
+    QTime dieTime = QTime::currentTime().addMSecs(10);
     while(QTime::currentTime() < dieTime)
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
 }
-
-#include <iostream>
 
 bool LevelStart::checkCollision()
 {
@@ -159,14 +159,14 @@ bool LevelStart::checkCollision()
 
 void LevelStart::buildLevel( int level )
 {
-    Q_UNUSED(level);
-    QMap<int,QVector<Hole*>>::iterator it = this->levels.begin();
-    for( int index = 0; index < it.value().count(); ++index )
-        scene->addItem(it.value().at(index)->graphic);
-    if( it == levels.end() )
+    Q_UNUSED(level)
+    //QMap<int,QVector<Hole*>>::iterator it = levels.begin();
+    //for( int index = 0; index < it.value().count(); ++index )
+        //scene->addEllipse(it.value().at(index)->graphic);
+    /*if( it == levels.end() )
         ui->DegreeOrRadian->setText(tr("Nada guardado en el mapa"));
     else
-        ui->DegreeOrRadian->setText(tr("Size=%1 (%2,%3)").arg(it.value().count()).arg(0).arg(0));
+        ui->DegreeOrRadian->setText(tr("Size=%1 (%2,%3)").arg(it.value().count()).arg(0).arg(0));*/
 }
 
 int LevelStart::loadLevels()
@@ -251,13 +251,16 @@ void LevelStart::level1(const QString &mode)
     Hole* hole1 = new Hole(small1);
     hole1->setScore(500);
     holes.push_back(hole1);
+
     QGraphicsEllipseItem* small2 = scene->addEllipse(40, 200, 30, 30, blackPen, smallBalls );
     Hole* hole2 = new Hole(small2);
     hole2->setScore(500);
+
     holes.push_back(hole2);
     QGraphicsEllipseItem* small3 = scene->addEllipse(230, 350, 30, 30, blackPen, smallBalls );
     Hole* hole3 = new Hole(small3);
     hole3->setScore(500);
+
     holes.push_back(hole3);
     QGraphicsEllipseItem* small4 = scene->addEllipse(300, 200, 30, 30, blackPen, smallBalls );
     Hole* hole4 = new Hole(small4);

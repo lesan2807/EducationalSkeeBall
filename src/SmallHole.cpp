@@ -1,7 +1,6 @@
 #include "SmallHole.h"
 #include <QBrush>
 #include <QGraphicsScene>
-#include <iostream>
 
 SmallHole::SmallHole(double x, double y)
 {
@@ -15,7 +14,6 @@ SmallHole::SmallHole(double x, double y)
 
 int SmallHole::getScore() const
 {
-    std::cerr << "why";
     return 500;
 }
 

@@ -11,8 +11,3 @@ BigHole::BigHole(double x, double y)
     this->score = 100;
 }
 
-int BigHole::getScore() const
-{
-    return 100;
-}
-

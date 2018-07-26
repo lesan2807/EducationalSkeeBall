@@ -11,8 +11,3 @@ MediumHole::MediumHole(double x, double y)
     this->score = 200;
 }
 
-int MediumHole::getScore() const
-{
-    return 200;
-}
-

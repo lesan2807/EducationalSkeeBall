@@ -67,13 +67,12 @@ void Hole::setColor(QBrush color)
     this->color = color;
 }
 
-void Hole::setScore(int score)
-{
-    this->score = score;
-}
-
-int Hole::getScore() const
+int Hole::getScore()
 {
     return this->score;
 }
 
+void Hole::setScore(int score)
+{
+    this->score = score;
+}
